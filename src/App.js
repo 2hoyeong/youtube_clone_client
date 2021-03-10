@@ -1,12 +1,16 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Main from './pages/Main';
+import { GlobalStyle } from './GlobalStyle';
 
 const App = () => {
   return (
-    <Switch>
-      <Route exact path="/" component={Main} />
-    </Switch>
+    <>
+      <GlobalStyle />
+      <Switch>
+        <Route exact path="/" component={Main} />
+      </Switch>
+    </>
   );
 };
 
