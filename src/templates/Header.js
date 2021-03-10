@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import LoginButton from '../components/common/LoginButton';
-import Searchbar from '../components/common/Searchbar';
+import SearchBar from '../components/common/SearchBar';
 import styled from 'styled-components';
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
         <Logo height="24px" width="80px" fill="#fff" />
       </Left>
       <Center>
-        <Searchbar />
+        <SearchBar />
       </Center>
       <Right>
         <LoginButton />
