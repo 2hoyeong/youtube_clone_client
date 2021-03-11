@@ -7,5 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         width: 100%;
         margin: 0 auto;
+        background-color: #f9f9f9;
     }
+    a { text-decoration:none }
 `;
