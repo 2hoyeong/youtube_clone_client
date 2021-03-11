@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../templates/Header';
+import VideoList from '../templates/VideoList';
 
 const Main = () => {
   return (
     <>
       <Header />
-      <div>메인페이지입니다.</div>
+      <VideoList videoList={TestVideo} />
     </>
   );
 };
