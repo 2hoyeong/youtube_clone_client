@@ -3,12 +3,15 @@ import { ReactComponent as Logo } from '../assets/logo.svg';
 import LoginButton from '../components/common/LoginButton';
 import SearchBar from '../components/common/SearchBar';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <FlexDiv>
       <Left>
-        <Logo height="24px" width="80px" fill="#fff" />
+        <Link to="/">
+          <Logo height="24px" width="80px" fill="#fff" />
+        </Link>
       </Left>
       <Center>
         <SearchBar />
