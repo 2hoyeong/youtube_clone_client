@@ -26,20 +26,26 @@ const VideoWatch = ({ match }) => {
       window.location = '/';
     }
   }, [video.error]);
-
+  console.log(video);
   return (
     <>
       <Header />
-      <VideoView src={`${instance.defaults.baseURL}api/v1/video/view/${videoId}`} />
-      <VideoDescDiv>
-        <VideoMeta
-          title={video.title}
-          views={'1971'}
-          date={'2020.6.28'}
-          profileImg={'https://sample-videos.com/img/Sample-jpg-image-500kb.jpg'}
-          uploader={'업로더1'}
-        />
-      </VideoDescDiv>
+      {video.data ? (
+        <>
+          <VideoView src={`${instance.defaults.baseURL}api/v1/video/view/${videoId}`} />
+          <VideoDescDiv>
+            <VideoMeta
+              title={video.data.title}
+              views={video.data.views}
+              date={video.data.createdDate}
+              profileImg={video.data.profileImage}
+              uploader={video.data.name}
+            />
+          </VideoDescDiv>
+        </>
+      ) : (
+        <div>비디오를 불러오는 중 입니다.</div>
+      )}
     </>
   );
 };
