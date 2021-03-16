@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import instance from '../../lib/apis/instance';
 
 const VideoMeta = ({ title, views, date, profileImg, uploader }) => {
   return (
@@ -12,7 +13,7 @@ const VideoMeta = ({ title, views, date, profileImg, uploader }) => {
       </div>
       <FlexDiv>
         <CircleDiv>
-          <ProfileImg src={profileImg} />
+          <ProfileImg src={`${instance.defaults.baseURL}api/v1/user/profileImage/${profileImg}`} />
         </CircleDiv>
         <UploaderDiv>{uploader}</UploaderDiv>
       </FlexDiv>
