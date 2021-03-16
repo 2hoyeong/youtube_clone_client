@@ -26,7 +26,7 @@ const VideoWatch = ({ match }) => {
       window.location = '/';
     }
   }, [video.error]);
-  console.log(video);
+
   return (
     <>
       <Header />
