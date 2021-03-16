@@ -22,7 +22,7 @@ const Main = () => {
       {videoList.data ? (
         <VideoList videoList={videoList.data} />
       ) : (
-        <div style={{ 'text-align': 'center' }}>업로드된 비디오가 없습니다.</div>
+        <div style={{ textAlign: 'center' }}>업로드된 비디오가 없습니다.</div>
       )}
     </>
   );
