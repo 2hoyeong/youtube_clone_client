@@ -1,6 +1,7 @@
 import React from 'react';
 import Video from '../components/main/Video';
 import styled from 'styled-components';
+import instance from '../lib/apis/instance';
 
 const VideoList = ({ videoList }) => {
   return (
@@ -10,11 +11,11 @@ const VideoList = ({ videoList }) => {
           <Video
             key={video.id}
             id={video.id}
-            thumbnail={video.thumbnailPath}
+            thumbnail={`${instance.defaults.baseURL}api/v1/video/${video.id}/thumbnail`}
             title={video.title}
             uploader={video.uploader}
             views={video.views}
-            profileImg={video.profileImg}
+            profileImg={`${instance.defaults.baseURL}api/v1/user/profileImage/${video.profileImage}`}
           />
         );
       })}
