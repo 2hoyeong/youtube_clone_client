@@ -4,7 +4,7 @@ import StyledInput from '../common/StyledInput';
 const PasswordInput = () => {
   return (
     <>
-      <StyledInput placeholder={'비밀번호'} type={'password'} style={{ marginTop: '8px' }} />
+      <StyledInput placeholder={'비밀번호'} type={'password'} />
     </>
   );
 };
