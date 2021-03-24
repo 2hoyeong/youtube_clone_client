@@ -4,6 +4,7 @@ import Main from './pages/Main';
 import { GlobalStyle } from './GlobalStyle';
 import VideoWatch from './pages/VideoWatch';
 import Login from './pages/Login';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route exact path="/" component={Main} />
         <Route exact path="/watch/:videoId" component={VideoWatch} />
         <Route exact path="/login" component={Login} />
+        <Route component={NotFoundPage} />
       </Switch>
     </>
   );
