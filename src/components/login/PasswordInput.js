@@ -1,10 +1,10 @@
 import React from 'react';
 import StyledInput from '../common/StyledInput';
 
-const PasswordInput = () => {
+const PasswordInput = ({ onChange }) => {
   return (
     <>
-      <StyledInput placeholder={'비밀번호'} type={'password'} />
+      <StyledInput placeholder={'비밀번호'} type={'password'} onChange={onChange} />
     </>
   );
 };
