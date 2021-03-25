@@ -6,8 +6,12 @@ import useAsync from '../lib/hooks/useAsync';
 import instance from '../lib/apis/instance';
 
 const requestLogin = (user) => async () => {
-  const response = await instance.post(`/api/v1/user/signin`, user);
-  return response.data;
+  try {
+    const response = await instance.post(`/api/v1/user/signin`, user);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
 };
 
 const Login = () => {
@@ -26,10 +30,19 @@ const Login = () => {
     setUser({ ...user, password: event.target.value });
   };
 
+  const isLoginSuccess = (status, data) => {
+    return status === 200 && data.token;
+  };
+
   useEffect(() => {
-    if (login.data?.token) {
-      localStorage.setItem('token', login.data.token);
-      window.location = '/';
+    if (login.data) {
+      const { status, data } = login.data;
+      if (!isLoginSuccess(status, data)) {
+        alert(data.message);
+      } else {
+        localStorage.setItem('token', data.token);
+        window.location = '/';
+      }
     }
   }, [login.data]);
 
