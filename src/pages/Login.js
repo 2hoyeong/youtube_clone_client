@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import IdPasswordInput from '../templates/IdPasswordInput';
 import LoginRegistButton from '../templates/LoginRegistButton';
+import useAsync from '../lib/hooks/useAsync';
+import instance from '../lib/apis/instance';
+
+const requestLogin = (user) => async () => {
+  const response = await instance.post(`/api/v1/user/signin`, user);
+  return response.data;
+};
 
 const Login = () => {
   const [user, setUser] = useState({
     id: '',
     password: '',
   });
+
+  const [login, doLogin] = useAsync(requestLogin(user), [], true);
 
   const onChangeIdInput = (event) => {
     setUser({ ...user, id: event.target.value });
@@ -16,6 +25,13 @@ const Login = () => {
   const onChangePasswordInput = (event) => {
     setUser({ ...user, password: event.target.value });
   };
+
+  useEffect(() => {
+    if (login.data?.token) {
+      localStorage.setItem('token', login.data.token);
+      window.location = '/';
+    }
+  }, [login.data]);
 
   return (
     <MaxDiv>
@@ -27,7 +43,7 @@ const Login = () => {
           <BlueSpan>아이디를 잊으셨나요?</BlueSpan>
           <br />내 컴퓨터가 아닌가요? 게스트 모드를 사용하여 비공개로 로그인하세요. <BlueSpan>자세히 알아보기</BlueSpan>
         </div>
-        <LoginRegistButton />
+        <LoginRegistButton onClickLoginButton={doLogin} />
       </FlexDiv>
     </MaxDiv>
   );
