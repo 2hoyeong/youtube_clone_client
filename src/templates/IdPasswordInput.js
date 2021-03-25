@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import IdInput from '../components/login/IdInput';
 import PasswordInput from '../components/login/PasswordInput';
 
-const IdPasswordInput = ({ onChangeIdInput, onChangePasswordInput }) => {
+const IdPasswordInput = ({ onChangeIdInput, onChangePasswordInput, onPressEnter }) => {
+  const enterKeyPressEvent = (event) => {
+    if (event.key === 'Enter') onPressEnter();
+  };
   return (
     <InputDiv>
-      <IdInput onChange={onChangeIdInput} />
-      <PasswordInput onChange={onChangePasswordInput} />
+      <IdInput onChange={onChangeIdInput} onPressEnter={enterKeyPressEvent} />
+      <PasswordInput onChange={onChangePasswordInput} onPressEnter={enterKeyPressEvent} />
     </InputDiv>
   );
 };

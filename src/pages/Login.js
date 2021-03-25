@@ -38,7 +38,11 @@ const Login = () => {
       <FlexDiv>
         <TitleDiv>로그인</TitleDiv>
         <DescDiv>Youtube로 이동</DescDiv>
-        <IdPasswordInput onChangeIdInput={onChangeIdInput} onChangePasswordInput={onChangePasswordInput} />
+        <IdPasswordInput
+          onChangeIdInput={onChangeIdInput}
+          onChangePasswordInput={onChangePasswordInput}
+          onPressEnter={doLogin}
+        />
         <div>
           <BlueSpan>아이디를 잊으셨나요?</BlueSpan>
           <br />내 컴퓨터가 아닌가요? 게스트 모드를 사용하여 비공개로 로그인하세요. <BlueSpan>자세히 알아보기</BlueSpan>
