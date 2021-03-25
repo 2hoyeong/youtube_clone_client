@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import IdPasswordInput from '../templates/IdPasswordInput';
 import LoginRegistButton from '../templates/LoginRegistButton';
 
 const Login = () => {
+  const [user, setUser] = useState({
+    id: '',
+    password: '',
+  });
+
+  const onChangeIdInput = (event) => {
+    setUser({ ...user, id: event.target.value });
+  };
+
+  const onChangePasswordInput = (event) => {
+    setUser({ ...user, password: event.target.value });
+  };
+
   return (
     <MaxDiv>
       <FlexDiv>
         <TitleDiv>로그인</TitleDiv>
         <DescDiv>Youtube로 이동</DescDiv>
-        <IdPasswordInput />
+        <IdPasswordInput onChangeIdInput={onChangeIdInput} onChangePasswordInput={onChangePasswordInput} />
         <div>
           <BlueSpan>아이디를 잊으셨나요?</BlueSpan>
           <br />내 컴퓨터가 아닌가요? 게스트 모드를 사용하여 비공개로 로그인하세요. <BlueSpan>자세히 알아보기</BlueSpan>
