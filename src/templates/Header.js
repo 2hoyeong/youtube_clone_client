@@ -4,8 +4,9 @@ import LoginButton from '../components/common/LoginButton';
 import SearchBar from '../components/common/SearchBar';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import LogoutButton from '../components/common/LogoutButton';
 
-const Header = () => {
+const Header = ({ isLogin }) => {
   return (
     <FlexDiv>
       <Left>
@@ -16,9 +17,7 @@ const Header = () => {
       <Center>
         <SearchBar />
       </Center>
-      <Right>
-        <LoginButton />
-      </Right>
+      <Right>{isLogin ? <LoginButton /> : <LogoutButton />}</Right>
     </FlexDiv>
   );
 };
