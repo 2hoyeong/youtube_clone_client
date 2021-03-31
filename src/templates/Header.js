@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import LoginButton from '../components/common/LoginButton';
 import SearchBar from '../components/common/SearchBar';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../components/common/LogoutButton';
+import instance from '../lib/apis/instance';
+import useAsync from '../lib/hooks/useAsync';
 
-const Header = ({ isLogin }) => {
+const validateToken = async () => {
+  try {
+    const response = await instance.get(`/api/v1/user`);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+const Header = () => {
+  const [isLogin, checkToken] = useAsync(validateToken, [], true);
+
+  useEffect(() => {
+    checkToken();
+  }, []);
+
   return (
     <FlexDiv>
       <Left>
@@ -17,7 +34,7 @@ const Header = ({ isLogin }) => {
       <Center>
         <SearchBar />
       </Center>
-      <Right>{isLogin ? <LoginButton /> : <LogoutButton />}</Right>
+      <Right>{isLogin.data?.status === 200 ? <LogoutButton /> : <LoginButton />}</Right>
     </FlexDiv>
   );
 };
