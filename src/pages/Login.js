@@ -40,7 +40,7 @@ const Login = () => {
       if (!isLoginSuccess(status, data)) {
         alert(data.message);
       } else {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('accessToken', data.token);
         window.location = '/';
       }
     }
