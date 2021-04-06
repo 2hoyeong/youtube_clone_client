@@ -4,12 +4,12 @@ import IdInput from '../components/regist/IdInput';
 import PasswordInput from '../components/regist/PasswordInput';
 import NameInput from '../components/regist/NameInput';
 
-const RegistInputs = () => {
+const RegistInputs = ({ onChangeIdInput, onChangePasswordInput, onChangeNameInput }) => {
   return (
     <InputDiv>
-      <IdInput />
-      <PasswordInput />
-      <NameInput />
+      <IdInput onChange={onChangeIdInput} />
+      <PasswordInput onChange={onChangePasswordInput} />
+      <NameInput onChange={onChangeNameInput} />
     </InputDiv>
   );
 };

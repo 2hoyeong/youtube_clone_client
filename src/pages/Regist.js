@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import RegistInputs from '../templates/RegistInputs';
 import RegistButton from '../templates/RegistButton';
 
 const Regist = () => {
+  const [registInfo, setRegistInfo] = useState({
+    id: '',
+    password: '',
+    name: '',
+  });
+
+  const onChangeIdInput = (event) => {
+    const { value } = event.target;
+    setRegistInfo({ ...registInfo, id: value });
+  };
+
+  const onChangePasswordInput = (event) => {
+    const { value } = event.target;
+    setRegistInfo({ ...registInfo, password: value });
+  };
+
+  const onChangeNameInput = (event) => {
+    const { value } = event.target;
+    setRegistInfo({ ...registInfo, name: value });
+  };
+
   return (
     <MaxDiv>
       <FlexDiv>
         <TitleDiv>Google 계정 만들기</TitleDiv>
         <DescDiv>Youtube로 이동</DescDiv>
-        <RegistInputs />
+        <RegistInputs
+          onChangeIdInput={onChangeIdInput}
+          onChangePasswordInput={onChangePasswordInput}
+          onChangeNameInput={onChangeNameInput}
+        />
         <div>
           <br />
           하나의 계정으로 모든 Google 서비스를 이용할 수 있습니다.
