@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import RegistInputs from '../templates/RegistInputs';
+import RegistButton from '../templates/RegistButton';
 
 const Regist = () => {
   return (
@@ -13,7 +14,7 @@ const Regist = () => {
           <br />
           하나의 계정으로 모든 Google 서비스를 이용할 수 있습니다.
         </div>
-        {/* <LoginRegistButton onClickLoginButton={doLogin} /> */}
+        <RegistButton />
       </FlexDiv>
     </MaxDiv>
   );
