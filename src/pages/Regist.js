@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RegistInputs from '../templates/RegistInputs';
 import RegistButton from '../templates/RegistButton';
+import useAsync from '../lib/hooks/useAsync';
+import instance from '../lib/apis/instance';
+
+const requestRegist = (registInfo) => async () => {
+  try {
+    const response = await instance.post(`/api/v1/user/signup`, registInfo);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
 
 const Regist = () => {
   const [registInfo, setRegistInfo] = useState({
@@ -9,6 +20,8 @@ const Regist = () => {
     password: '',
     name: '',
   });
+
+  const [regist, doRegist] = useAsync(requestRegist(registInfo), [], true);
 
   const onChangeIdInput = (event) => {
     const { value } = event.target;
@@ -25,6 +38,22 @@ const Regist = () => {
     setRegistInfo({ ...registInfo, name: value });
   };
 
+  const isRegistSuccess = (status) => {
+    return status === 200;
+  };
+
+  useEffect(() => {
+    if (regist.data) {
+      const { status, data } = regist.data;
+      if (!isRegistSuccess(status)) {
+        alert(data.message);
+      } else {
+        alert('회원가입이 완료되었습니다.');
+        window.location = '/login';
+      }
+    }
+  }, [regist.data]);
+
   return (
     <MaxDiv>
       <FlexDiv>
@@ -39,7 +68,7 @@ const Regist = () => {
           <br />
           하나의 계정으로 모든 Google 서비스를 이용할 수 있습니다.
         </div>
-        <RegistButton />
+        <RegistButton onClick={doRegist} />
       </FlexDiv>
     </MaxDiv>
   );

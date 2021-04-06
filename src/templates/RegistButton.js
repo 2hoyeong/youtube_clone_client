@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import BlueButton from '../components/common/BlueButton';
 import { Link } from 'react-router-dom';
 
-const RegistButton = ({ onClickLoginButton: onClickRegistButton }) => {
+const RegistButton = ({ onClick }) => {
   return (
     <Div>
       <Link to={'/login'} style={{ color: '#1a73e8' }}>
         로그인하러 가기
       </Link>
-      <BlueButton text={'회원가입'} onClick={onClickRegistButton} />
+      <BlueButton text={'회원가입'} onClick={onClick} />
     </Div>
   );
 };
