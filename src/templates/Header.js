@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import LogoutButton from '../components/common/LogoutButton';
 import instance from '../lib/apis/instance';
 import useAsync from '../lib/hooks/useAsync';
+import UploadButton from '../components/videoupload/UploadButton';
 
 const validateToken = async () => {
   try {
@@ -34,7 +35,18 @@ const Header = () => {
       <Center>
         <SearchBar />
       </Center>
-      <Right>{isLogin.data?.status === 200 ? <LogoutButton /> : <LoginButton />}</Right>
+      <Right>
+        {isLogin.data?.status === 200 ? (
+          <FlexDiv>
+            <Link to="/upload">
+              <UploadButton />
+            </Link>
+            <LogoutButton />{' '}
+          </FlexDiv>
+        ) : (
+          <LoginButton />
+        )}
+      </Right>
     </FlexDiv>
   );
 };
