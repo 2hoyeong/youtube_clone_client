@@ -6,6 +6,7 @@ import VideoWatch from './pages/VideoWatch';
 import Login from './pages/Login';
 import NotFoundPage from './pages/NotFoundPage';
 import Regist from './pages/Regist';
+import VideoUpload from './pages/VideoUpload';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path="/watch/:videoId" component={VideoWatch} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/regist" component={Regist} />
+        <Route exact path="/upload" component={VideoUpload} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
