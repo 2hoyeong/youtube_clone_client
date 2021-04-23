@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import NotFoundPage from './pages/NotFoundPage';
 import Regist from './pages/Regist';
 import VideoUpload from './pages/VideoUpload';
+import VideoDescript from './pages/VideoDescript';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/regist" component={Regist} />
         <Route exact path="/upload" component={VideoUpload} />
+        <Route exact path="/upload/:videoId" component={VideoDescript} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
